@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="nav-bar"></div>
+<div id="app">
+<div class="product">
+<div class="product-image">
+	<img v-bind:src="image">
+</div>
+<div class="product-info">
+<h1>{{ product }}</h1>
+<p v-if="quantity > 10">In Stock!</p>
+<p v-else-if="quantity > 0 && quantity <= 10">Almost Sold Out!</p>
+<p v-else 
+	:class="{outOfStock : quantity<=10}"
+>Sold Out!</p>
+<p v-show="onSale">On Sale!</p>
+
+<ul>
+	<li v-for="detail in details">{{ detail }}</li>
+</ul>
+<h3>Variants</h3>
+<div class="color-box" 
+	v-for="(variant,index) in variants"
+	:key="variant.variantId"
+	:style="{backgroundColor:variant.variantColor}"
+	@mouseover="updateImage(index)">
+</div>
+<h3>Sizes</h3>
+<div v-for="size in sizes">
+	<p>{{ size }}</p>
+</div>
+
+<button v-on:click="addToCart" :disabled="quantity <=0"
+:class="{disabledButton: quantity<=0}"
+>Add to Cart</button>
+<br>
+<button v-on:click="removeFromCart" v-if="cart > 0">Remove from Cart</button>
+<div class="cart">
+	<p>Cart({{cart}})</p>
+</div>
+</div>
+</div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

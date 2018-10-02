@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="nav-bar"></div>
+<div id="app">
+<div class="cart">
+	<p>Cart({{cart}})</p>
+</div>
+<product :premium="premium" @add-to-cart="addToCart" @remove-from-cart="removeFromCart"></product>
+
+<product :premium="premium" @add-to-cart="addToCart" @remove-from-cart="removeFromCart"></product>
+
+<product :premium="premium" @add-to-cart="addToCart" @remove-from-cart="removeFromCart"></product>
+
+</div>
+<script src="index-component.js"></script>
+</body>
+</html>
